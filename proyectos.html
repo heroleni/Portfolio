@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Proyectos — Juan Eduardo Zorrilla Chávez</title>
+<meta name="description" content="Galería de proyectos filtrables por tecnología." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Sora:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<canvas id="starfield"></canvas>
+<div id="grid-overlay"></div>
+
+<nav class="nav" id="nav" aria-label="Navegación principal">
+  <a href="index.html" class="brand">
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg>
+    </span>
+    <span class="txt">J.<b>Zorrilla</b></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html"><span class="idx">01</span>Inicio</a></li>
+    <li><a href="proyectos.html" class="current-page"><span class="idx">02</span>Proyectos</a></li>
+    <li><a href="index.html#sobre-mi"><span class="idx">03</span>Sobre Mi</a></li>
+    <li><a href="index.html#contacto"><span class="idx">04</span>Contacto</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false"><span></span></button>
+</nav>
+
+<main class="proj-page">
+  <div class="wrap">
+    <div class="proj-head">
+      <div class="reveal">
+        <span class="eyebrow">02 — Bitacora de misiones</span>
+        <h1 class="section-title">Proyectos</h1>
+        <p class="section-sub">Cada proyecto sigue su propio Camino. Filtra por tecnologia para explorar las constelaciones de mi trabajo.</p>
+      </div>
+      <a href="index.html" class="btn ghost reveal d1" style="align-self:flex-start;">← Volver al inicio</a>
+    </div>
+
+    <div class="filters reveal d1" id="filters">
+      <button class="filter active" data-filter="all">✦ Todos <span class="cnt"></span></button>
+      <button class="filter" data-filter="python">🐍 Python <span class="cnt"></span></button>
+      <button class="filter" data-filter="htmlcss">🎨 HTML / CSS <span class="cnt"></span></button>
+      <button class="filter" data-filter="js">⚡ JavaScript <span class="cnt"></span></button>
+      <button class="filter" data-filter="db">🗄️ Bases de datos <span class="cnt"></span></button>
+      <button class="filter" data-filter="csharp">🔷 C# <span class="cnt"></span></button>
+      <button class="filter" data-filter="aspnet">🌐 ASP.NET <span class="cnt"></span></button>
+    </div>
+
+    <div class="proj-grid" id="projGrid"></div>
+    <div class="empty-note" id="emptyNote">// No hay misiones en esta constelacion todavia.</div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <a href="index.html" class="brand">
+        <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span>
+        <span class="txt">Juan <b>Zorrilla</b></span>
+      </a>
+      <div class="socials">
+        <a class="social tg" href="https://telegram.org/" target="_blank" rel="noopener" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 2.9 11.6c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.7c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.3 4.8 3.5c.9.5 1.5.2 1.7-.8L23.8 5.6c.3-1.2-.5-1.8-1.3-1.3Zm-3 4.4-7.7 7-.3 3.2-1.6-5 9-5.7c.4-.3.8-.1.6.5Z"/></svg>
+        </a>
+        <a class="social dc" href="#" data-social aria-label="Discord">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.4a18 18 0 0 1 4.4 1.4 16.6 16.6 0 0 0-14.4 0A18 18 0 0 1 9.6 3.4L9.4 3a19.8 19.8 0 0 0-4.9 1.4C1.6 8.8.8 13 1.2 17.2A19.9 19.9 0 0 0 7.3 20l.4-.6a13 13 0 0 1-2-1c.2-.1.3-.2.5-.3a14.2 14.2 0 0 0 12 0l.5.3a13 13 0 0 1-2 1l.4.6a19.9 19.9 0 0 0 6.1-2.8c.5-4.9-.8-9-3.3-12.8ZM8.5 14.8c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.8.9 1.7 2c0 1.1-.8 2-1.7 2Zm7 0c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.8.9 1.7 2c0 1.1-.7 2-1.7 2Z"/></svg>
+        </a>
+        <a class="social x" href="https://x.com/" target="_blank" rel="noopener" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2H21l-6.6 7.5L22 22h-6.3l-4.9-6.4L5.1 22H2.3l7-8L2 2h6.4l4.4 5.9L18.2 2Zm-1.1 18h1.7L7 3.8H5.2L17.1 20Z"/></svg>
+        </a>
+        <a class="social li" href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9V9Z"/></svg>
+        </a>
+        <a class="social gh" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.8 21.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8 0-.6.3-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.6 5 .3.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="copy">© <span id="year"></span> Juan Eduardo Zorrilla Chavez · Trazando rutas a traves del cosmos.</div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+// Render de proyectos (usa window.PROJECTS definido en main.js)
+(function initProjects() {
+  const grid      = document.getElementById('projGrid');
+  const emptyNote = document.getElementById('emptyNote');
+
+  function cardHTML(p) {
+    return `
+    <article class="card show-anim" data-tags="${p.tags.join(' ')}" style="--path:${p.color}">
+      <span class="path-tag"><span class="ic">${p.icon}</span> Camino · ${p.path}</span>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <div class="tech">${p.tech.map(t => `<span>${t}</span>`).join('')}</div>
+      <div class="links">
+        <a href="${p.repo}" target="_blank" rel="noopener">⟁ Código</a>
+        <a href="${p.demo}" target="_blank" rel="noopener">↗ Demo</a>
+      </div>
+    </article>`;
+  }
+
+  function updateCounts() {
+    document.querySelectorAll('.filter').forEach(btn => {
+      const f = btn.dataset.filter;
+      const n = f === 'all'
+        ? window.PROJECTS.length
+        : window.PROJECTS.filter(p => p.tags.includes(f)).length;
+      btn.querySelector('.cnt').textContent = `(${n})`;
+    });
+  }
+
+  function render(list) {
+    grid.innerHTML = list.map(cardHTML).join('');
+    emptyNote.style.display = list.length ? 'none' : 'block';
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: .1 });
+    grid.querySelectorAll('.card').forEach(c => { c.classList.add('reveal'); io.observe(c); });
+  }
+
+  document.getElementById('filters').addEventListener('click', e => {
+    const btn = e.target.closest('.filter');
+    if (!btn) return;
+    document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    render(f === 'all' ? window.PROJECTS : window.PROJECTS.filter(p => p.tags.includes(f)));
+  });
+
+  updateCounts();
+  render(window.PROJECTS);
+})();
+</script>
+</body>
+</html>
